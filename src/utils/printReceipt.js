@@ -146,7 +146,7 @@ export const printReceipt = (order) => {
                 <img src="/logo.png" class="logo-img" alt="Logo" onerror="this.style.display='none'" />
                 <div class="shop-name">Fast Casual Restaurant</div>
                 <div class="shop-info">96 Leisure, High Level Road, Maharagama</div>
-                <div class="shop-info">Tel: 0777 474 300</div>
+                <div class="shop-info">Tel: 0724536666 / 0741401699</div>
             </div>
 
             <div class="divider"></div>

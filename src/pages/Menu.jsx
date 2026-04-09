@@ -256,6 +256,11 @@ const Menu = () => {
 
     return (
         <div className="h-[calc(100vh-40px)] flex flex-col gap-6 relative">
+            <datalist id="category-list">
+                {categories.filter(c => c !== 'All').map(c => (
+                    <option key={c} value={c} />
+                ))}
+            </datalist>
             {/* Header & Controls */}
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 bg-surface p-6 rounded-3xl border border-border shadow-sm">
                 <div className="flex items-center gap-4 w-full md:w-auto">
@@ -360,15 +365,14 @@ const Menu = () => {
                             </div>
                             <div>
                                 <label className="block text-text-muted text-sm font-bold mb-1">Category</label>
-                                <select
+                                <input
+                                    type="text"
+                                    list="category-list"
                                     value={newItem.category}
                                     onChange={e => setNewItem({ ...newItem, category: e.target.value })}
                                     className="w-full bg-bg border border-border rounded-xl px-4 py-3 text-text focus:border-primary focus:outline-none"
-                                >
-                                    {['Base', 'Protein', 'Drink', 'Extra'].map(c => (
-                                        <option key={c} value={c}>{c}</option>
-                                    ))}
-                                </select>
+                                    placeholder="e.g. Dessert, Side..."
+                                />
                             </div>
                             <div>
                                 <label className="block text-text-muted text-sm font-bold mb-1">Selling Price {newItem.has_portions ? '(Normal)' : ''} (LKR)</label>
@@ -451,16 +455,14 @@ const Menu = () => {
                                         <span className="text-text-muted">Category:</span>
                                         {editingCategory ? (
                                             <div className="flex items-center gap-2">
-                                                <select
+                                                <input
+                                                    type="text"
+                                                    list="category-list"
                                                     value={editCategory}
                                                     onChange={(e) => setEditCategory(e.target.value)}
-                                                    className="bg-bg border border-primary rounded px-2 py-0.5 text-text font-bold focus:outline-none text-sm"
+                                                    className="bg-bg border border-primary rounded px-2 py-0.5 text-text font-bold focus:outline-none text-sm w-32"
                                                     autoFocus
-                                                >
-                                                    {['Base', 'Protein', 'Drink', 'Extra'].map(c => (
-                                                        <option key={c} value={c}>{c}</option>
-                                                    ))}
-                                                </select>
+                                                />
                                                 <button onClick={updateCategory} className="text-amber-400 hover:text-amber-300"><Check size={16} /></button>
                                                 <button onClick={() => setEditingCategory(false)} className="text-red-400 hover:text-red-300"><X size={16} /></button>
                                             </div>
