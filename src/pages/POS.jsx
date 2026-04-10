@@ -20,7 +20,7 @@ const POS = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedItemForPortion, setSelectedItemForPortion] = useState(null);
 
-    const categories = ['All', ...new Set(menuItems.map(item => item.category).filter(Boolean))];
+    const categories = ['All', ...new Set(menuItems.map(item => item.category))].filter(Boolean);
 
     const handleAddPortionItem = (item, portionType) => {
         const price = portionType === 'large' ? item.large_price : item.price;
